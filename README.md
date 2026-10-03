@@ -210,4 +210,4 @@ Untuk pertanyaan atau issue, silakan buat issue di repository ini.
 
 ---
 
-**KosManager v1.0** - Dibangun dengan Native PHP + TailwindCSS
+**SisKosan v1.0** - Dibangun dengan Native PHP + TailwindCSS
