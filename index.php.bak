@@ -1,0 +1,26 @@
+<?php
+/**
+ * Fallback router untuk root /siskosan/
+ * Handle request kalau mod_rewrite tidak jalan atau akses direct ke folder
+ */
+
+$requestUri = $_SERVER['REQUEST_URI'];
+$basePath = '/siskosan';
+
+// Strip base path
+$path = str_replace($basePath, '', $requestUri);
+$path = parse_url($path, PHP_URL_PATH);
+$path = trim($path, '/');
+
+// Redirect ke public/index.php dengan path yang sama
+$targetUrl = '/siskosan/public/index.php' . ($path ? '/' . $path : '');
+
+// Preserve query string
+$queryString = $_SERVER['QUERY_STRING'];
+if ($queryString) {
+    $targetUrl .= '?' . $queryString;
+}
+
+// Redirect
+header('Location: ' . $targetUrl, true, 301);
+exit;
